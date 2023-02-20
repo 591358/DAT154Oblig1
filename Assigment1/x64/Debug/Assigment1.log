@@ -1,0 +1,4 @@
+﻿  Assigment1.cpp
+C:\Users\Eier\source\repos\Assigment1\Assigment1\Assigment1.cpp(280,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Eier\source\repos\Assigment1\Assigment1\Assigment1.cpp(284,66): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Assigment1.vcxproj -> C:\Users\Eier\source\repos\Assigment1\x64\Debug\Assigment1.exe
