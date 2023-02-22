@@ -283,79 +283,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         std::wstring pnText = std::to_wstring(pn) + L"%";
         TextOut(hdc, aX, aY - 20, pnText.c_str(), pnText.length());
 
-        ////FRA VEST:
-        //int waitingCarsW = 0;
-        //
-        //for (std::size_t i = 0; i < xPos.size(); i++) {
-        //    
-        //    SelectObject(hdc, wColor[i]); 
-        //    if (xPos[i] < 545 - waitingCarsW * 60) { 
-
-        //        Rectangle(hdc, xPos[i] - 50, wY, xPos[i], wY + 20);                  
-        //        xPos[i]++;
-
-        //    } else { 
-        //        if (wGo) { 
-        // 
-        //            Rectangle(hdc, xPos[i] - 50, wY, xPos[i], wY + 20);
-        //            xPos[i]++;
-        //        }
-        //        else { 
-        //            if (xPos[i] > 545 ) {
-        //                Rectangle(hdc, xPos[i] - 50, wY, xPos[i], wY + 20);
-        //                xPos[i]++;
-        //                if (xPos[i] > screen.right + 50) {
-        //                    xPos.erase(xPos.begin() + i);
-        //                    wColor.erase(wColor.begin() + i);
-        //                }
-        //            }
-        //            else { 
-        //                Rectangle(hdc, xPos[i] - 50, wY, xPos[i], wY + 20);
-        //                waitingCarsW++; 
-        //            }
-        //        }
-        //    }
-        //} 
         for (std::size_t i = 0; i < xPos.size(); i++) {
             SelectObject(hdc, wColor[i]);
             Rectangle(hdc, xPos[i] - 50, wY, xPos[i], wY + 20);
         }
        
-        ////FRA NORD:
-        //int waitingCarsN = 0;
-
-        //for (std::size_t i = 0; i < yPos.size(); i++) {
-
-        //    SelectObject(hdc, nColor[i]);
-
-            /*if (yPos[i] < 270 - waitingCarsN * 60) {
-
-                Rectangle(hdc, nX, yPos[i] - 50, nX + 20, yPos[i]);
-                yPos[i]++;
-
-            }
-            else {
-                if (nGo) {
-
-                    Rectangle(hdc, nX, yPos[i] - 50, nX + 20, yPos[i]);
-                    yPos[i]++;;
-                }
-                else {
-                    if (yPos[i] > 270) {
-                        Rectangle(hdc, nX, yPos[i] - 50, nX + 20, yPos[i]);
-                        yPos[i]++;
-                        if (yPos[i] > screen.bottom + 50) {
-                            yPos.erase(yPos.begin() + i);
-                            nColor.erase(nColor.begin() + i);
-                        }
-                    }
-                    else {
-                        Rectangle(hdc, nX, yPos[i] - 50, nX + 20, yPos[i]);
-                        waitingCarsN++;
-                    }
-                }
-            }*/
-            //}
+      
 
         for (std::size_t i = 0; i < yPos.size(); i++) {
             SelectObject(hdc, nColor[i]);
@@ -476,7 +409,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         
         //West:
-        //COMMENTS: Re-used your logic - using counter to check when to spawn a car.
+       
         if (counter == 0 || counter > 60) {
         if (xPos.size() > 0) { //er det noen biler i vektoren
             if (xPos[xPos.size() - 1] > 70) { //sjekk om det ikke er en bil i veien
@@ -497,7 +430,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
 
         //North:
-        //COMMENTS: Re-used your logic - using counter to check when to spawn a car.
+       
         if (counter == 0 || counter > 60) {
 
         if (yPos.size() > 0) {
@@ -522,8 +455,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
         //Logikk for biler
         //FRA VEST:
-     
-        //COMMENTS: Increase the position by the counter, not 100% sure why it works as well as it does...
             for (std::size_t i = 0; i < xPos.size(); i++) {
 
                 if (xPos[i] < 545 - waitingCarsW * 60) {
@@ -653,7 +584,7 @@ INT_PTR CALLBACK PROBABILITY(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPar
     }
 
     case WM_COMMAND:
-        if (LOWORD(wParam) == IDOK )
+        if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
         {
             //COMMENTS: Retrieves values from input
 
@@ -663,7 +594,7 @@ INT_PTR CALLBACK PROBABILITY(HWND hDlg, UINT message, WPARAM wParam, LPARAM lPar
             int probWest = GetDlgItemInt(hDlg, IDC_PROBWIN, &isNum, true);
             int probNorth = GetDlgItemInt(hDlg, IDC_PROBNIN, &isNum, true);
             
-            //COMMENTS: NEED to set both values, or they won't change -> CBA to fix it
+            //COMMENTS: NEED to set both values, or they won't change
 
 
             if (isNum) {
